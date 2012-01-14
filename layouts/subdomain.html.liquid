@@ -29,11 +29,20 @@
 	</ul>
 	{% else %}
 	<p class="warning">No crap here!</p>
-	<p><a href="#" title="#" class="btn primary add  showbtn">+ Add some doo-doo</a></p>
+	<form id="entry_form" class="clearfix" enctype="multipart/form-data" action="{{space.title}}/ideas" method="post">
+	<div id="new-idea" style="display: block;">
+	<h3>Add a new idea...</h3>
+	<fieldset>
+	<input id="idea_title" class="span4" type="text" placeholder="Idea title" name="idea[title]">
+	<div class="input">
+	<div class="checkarea">
+	<input class="btn primary submit" type="submit" value="add idea">
+	</fieldset>
+	</div>
+	</form>
 	{% endif %}
 </div>
 
-{{ yield }}
 
 <div class="footer">
 	<p>Under the crap.</p>
