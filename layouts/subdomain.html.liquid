@@ -11,10 +11,9 @@
 <p>{{space.summary}}</p>
 <br />
 {% if current_user %}
-	<h2>Hi {{current_user.nickname}}, are are signed in.</h2>
-	<p><a href="/auth/signout">Sign out</a></p>
+	<h2>Hi {{current_user.nickname}}, are are signed in. <a href="/auth/signout">Sign out</a><h2>
 {% else %}
-	<h2>Sign in with <a href="/auth/twitter">twitter</a> or <a href="/auth/facebook">facebook</a> to like topics.</h2>
+	<h2>Sign in with <a href="/auth/twitter">twitter</a> or <a href="/auth/facebook">facebook</a> to like stuff.</h2>
 {% endif %}
 <br />
 </div>
