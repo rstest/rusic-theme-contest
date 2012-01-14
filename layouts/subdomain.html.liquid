@@ -5,7 +5,7 @@
     <title>{{space.title}}</title>
 </head>
 
-<body>
+<body style="bgcolour : blue;">
 <div class="cleanair">
 <h1>{{space.title}}</h1>
 <p>{{space.summary}}</p>
@@ -31,6 +31,7 @@
 	<p class="warning">No crap here!</p>
 	<div id="new-idea" style="display: block;">
 	<h3>Add some crap...</h3>
+	<form id="entry_form" class="clearfix" enctype="multipart/form-data" action="{{space.title}}/ideas" method="post">	
 	<fieldset>
 	<input id="idea_title" class="span4" type="text" placeholder="Title" name="idea[title]">
 	<div class="input">
