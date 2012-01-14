@@ -22,7 +22,9 @@
 <h2>List of crap</h2>
 	{% if space.ideas != empty %}
 	<ul>
-
+		{% for idea in space %}
+		<li><a href="{{idea.permalink}}" title="link to full page for {{idea.title}}"><img src="{{idea.images.first.square}}" alt="thumbnail for {{idea.title}}" class="thumbnail" /></a></li>
+		{% endfor %}
 	</ul>
 	{% else %}
 	<p class="warning">No crap here!</p>
