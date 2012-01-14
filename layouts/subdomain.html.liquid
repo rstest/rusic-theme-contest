@@ -29,13 +29,17 @@
 	</ul>
 	{% else %}
 	<p class="warning">No crap here!</p>
-	<form id="entry_form" class="clearfix" enctype="multipart/form-data" action="{{space.title}}/ideas" method="post">
 	<div id="new-idea" style="display: block;">
 	<h3>Add a new idea...</h3>
 	<fieldset>
 	<input id="idea_title" class="span4" type="text" placeholder="Idea title" name="idea[title]">
 	<div class="input">
+	<textarea id="idea_content" placeholder="Your idea" rows="3" name="idea[content]"></textarea>
+	</div>
 	<div class="checkarea">
+	<input type="checkbox" checked="" value="1" name="idea[should_post_to_social]">
+	share this idea to twitter?
+	</div>
 	<input class="btn primary submit" type="submit" value="add idea">
 	</fieldset>
 	</div>
