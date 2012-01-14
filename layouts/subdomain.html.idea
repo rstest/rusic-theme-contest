@@ -1,0 +1,83 @@
+{% if env == "development" %}
+  {% assign asset_url="http://localhost:8080" %}
+{% else %}
+  {% assign asset_url="https://s3.amazonaws.com/rusic-contest-theme" %}
+{% endif %}
+
+<!doctype html>
+<html>
+
+<head>
+    <title>{{ sitetitle }}	{% if current_user %}{{current_user.nickname}}{% endif %}
+    </title>
+
+    <link rel="stylesheet" href="{{asset_url}}/stylesheets/contest.css" />
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+    <script src="/assets/jquery.countdown.min.js"></script>
+    <script src="{{asset_url}}/javascripts/scripts.js"></script>
+</head>
+
+<body>
+	<div class="top">
+		{% if current_user %}
+		<div class="top-useroptions">
+		<h1>Hi {{current_user.nickname}}</h1>
+		{% elseif %}
+		<h1>{{space.title}}</h1>
+		{% endif %}
+	</div>
+
+	<div class="ideas-defaultfilters">
+		{{ filters-default }}
+		{{ filters-mine }}
+	</div>
+
+
+	<div class="content">
+		<div class="ideas-popular">
+            {% if space.ideas != empty %}
+            <ul>
+                {% for idea in space.most_liked_ideas limit:6 %}
+                <li><a href="{{idea.permalink}}" title="link to full page for {{idea.title}}"><img src="{{idea.images.first.square}}" alt="thumbnail for {{idea.title}}" class="thumbnail" /></a></li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p class="no-popular">There aren't any entries yet!</p>
+            {% endif %}
+		</div>
+		
+		<div class="ideas-latest">
+		
+		
+		</div>
+		
+		<div class="ideas-mine">
+		{% if current_user.ideas %}
+			<a href="#" title="#" class="btn primary add  showbtn">+ Add new entry</a>		
+			{{space.summary | markdown}}
+		{% endif %}
+		{% else %}
+			<div id="user-block">
+			<p>login to post a thought</p>
+				<div class="alert-message tip">
+					<p>login with your facebook or twitter account</p>
+				</div>
+
+                <ul class="auth">
+                    <li class="twitter"><a href="/auth/twitter" class="button"><span></span>Twitter</a></li>
+                    <li class="facebook"><a href="/auth/facebook" class="button"><span></span>Facebook</a></li>
+                </ul>
+            </div>
+		{% endif %}		
+
+		{{ ideas-mine }}
+		</div>
+	</div>
+
+	<div class="footer">
+	<p>Copirites n all that?</p>
+	</div>
+	
+</body>
+</html>
