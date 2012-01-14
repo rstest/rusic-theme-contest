@@ -13,6 +13,21 @@
 {% if current_user %}
 	<h2>Hi {{current_user.nickname}}, are are signed in. <a href="/auth/signout">Sign out</a><h2>
 {% else %}
+	<div id="new-idea" style="display: block;">
+	<h3>Add some crap...</h3>
+	<form id="entry_form" class="clearfix" enctype="multipart/form-data" action="myowntestone/ideas" method="post">	
+	<fieldset>
+	<input id="idea_title" class="span4" type="text" placeholder="Title" name="idea[title]">
+	<textarea id="idea_content" placeholder="Your crap" rows="3" name="idea[content]"></textarea>
+	<div class="checkarea">
+	<input type="checkbox" checked="" value="1" name="idea[should_post_to_social]">
+	share this crap with others?
+	</div>
+	<input class="btn primary submit" type="submit" value="add idea">
+	</fieldset>
+	</form>
+	</div>
+	
 	<h2>Sign in with <a href="/auth/twitter">twitter</a> or <a href="/auth/facebook">facebook</a> to like stuff.</h2>
 {% endif %}
 <br />
